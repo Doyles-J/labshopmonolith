@@ -1,24 +1,22 @@
----
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend
+  name: monolith
   labels:
-    app: frontend
+    app: monolith
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: frontend
+      app: monolith
   template:
     metadata:
       labels:
-        app: frontend
+        app: monolith
     spec:
       containers:
-        - name: frontend
-          image: username/frontend:latest
+        - name: monolith
+          image: "username/monolith:latest"
           ports:
             - containerPort: 8080
           readinessProbe:

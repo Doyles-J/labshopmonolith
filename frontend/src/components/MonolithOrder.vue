@@ -1,5 +1,5 @@
 <template>
-    <v-card style="width:450px; height:100%;" outlined>
+    <v-card outlined>
         <template slot="progress">
             <v-progress-linear
                     color="primary-darker-1"
@@ -15,23 +15,31 @@
             Order
         </v-card-title >        
 
-        <v-card-text>
+        <v-card-text style="background-color: white;">
             <String label="ProductId" v-model="value.productId" :editMode="editMode" :inputUI="''"/>
             <Number label="Qty" v-model="value.qty" :editMode="editMode" :inputUI="''"/>
             <String label="CustomerId" v-model="value.customerId" :editMode="editMode" :inputUI="''"/>
             <Number label="Amount" v-model="value.amount" :editMode="editMode" :inputUI="''"/>
         </v-card-text>
 
-        <v-card-actions>
+        <v-card-actions style="background-color: white;">
             <v-spacer></v-spacer>
-            <v-btn
-                color="primary"
-                text
-                @click="edit"
-                v-if="!editMode"
-            >
-                수정
-            </v-btn>
+            <div v-if="!editMode">
+                <v-btn
+                    color="primary"
+                    text
+                    @click="edit"
+                >
+                    수정
+                </v-btn>
+                <v-btn
+                    color="primary"
+                    text
+                    @click="remove"
+                >
+                    삭제
+                </v-btn>
+            </div>
             <div v-else>
                 <v-btn
                     color="primary"
@@ -39,14 +47,6 @@
                     @click="save"
                 >
                     Order
-                </v-btn>
-                <v-btn
-                    color="primary"
-                    text
-                    @click="remove"
-                    v-if="!editMode"
-                >
-                    삭제
                 </v-btn>
                 <v-btn
                     color="primary"

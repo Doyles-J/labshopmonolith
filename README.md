@@ -1,7 +1,7 @@
 # 
 
 ## Model
-www.msaez.io/#/storming/labshopmonolith-230822
+www.msaez.io/#/courses/cna-full/f34b48e0-ff3d-11ef-ada3-31b936e467fd/monolith-2-misvc-2022
 
 ## Before Running Services
 ### Make sure there is a Kafka server running
@@ -33,11 +33,11 @@ mvn spring-boot:run
 ## Test by API
 - monolith
 ```
- http :8088/orders id="id" productId="productId" qty="qty" customerId="customerId" amount="amount" 
+ http :8088/orders id="id"productId="productId"qty="qty"customerId="customerId"amount="amount"
 ```
 - inventory
 ```
- http :8088/inventories id="id" stock="stock" 
+ http :8088/inventories id="id"stock="stock"
 ```
 
 
@@ -79,4 +79,3 @@ sudo ./aws/install
 curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
 sudo mv /tmp/eksctl /usr/local/bin
 ```
-

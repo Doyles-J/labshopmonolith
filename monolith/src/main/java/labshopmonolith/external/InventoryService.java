@@ -7,13 +7,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-//<<< Resilency / Circuit Breaker
 @FeignClient(name = "inventory", url = "${api.url.inventory}")
 public interface InventoryService {
-    @RequestMapping(method = RequestMethod.PUT, path = "/inventories/{id}/d")
+    @RequestMapping(
+        method = RequestMethod.PUT,
+        path = "/inventories/{id}/decreasestock"
+    )
     public void decreaseStock(
         @PathVariable("id") Long id,
         @RequestBody DecreaseStockCommand decreaseStockCommand
     );
 }
-//>>> Resilency / Circuit Breaker

@@ -1,5 +1,5 @@
 <template>
-    <v-card style="width:450px; height:100%;" outlined>
+    <v-card outlined>
         <template slot="progress">
             <v-progress-linear
                     color="primary-darker-1"
@@ -15,20 +15,28 @@
             Inventory
         </v-card-title >        
 
-        <v-card-text>
+        <v-card-text style="background-color: white;">
             <Number label="Stock" v-model="value.stock" :editMode="editMode" :inputUI="''"/>
         </v-card-text>
 
-        <v-card-actions>
+        <v-card-actions style="background-color: white;">
             <v-spacer></v-spacer>
-            <v-btn
-                color="primary"
-                text
-                @click="edit"
-                v-if="!editMode"
-            >
-                수정
-            </v-btn>
+            <div v-if="!editMode">
+                <v-btn
+                    color="primary"
+                    text
+                    @click="edit"
+                >
+                    수정
+                </v-btn>
+                <v-btn
+                    color="primary"
+                    text
+                    @click="remove"
+                >
+                    삭제
+                </v-btn>
+            </div>
             <div v-else>
                 <v-btn
                     color="primary"
@@ -36,14 +44,6 @@
                     @click="save"
                 >
                     AddProduct
-                </v-btn>
-                <v-btn
-                    color="primary"
-                    text
-                    @click="remove"
-                    v-if="!editMode"
-                >
-                    삭제
                 </v-btn>
                 <v-btn
                     color="primary"
@@ -209,7 +209,7 @@
             async decreaseStock(params) {
                 try {
                     if(!this.offline) {
-                        var temp = await axios.put(axios.fixUrl(this.value._links['d'].href), params)
+                        var temp = await axios.put(axios.fixUrl(this.value._links['decreasestock'].href), params)
                         for(var k in temp.data) {
                             this.value[k]=temp.data[k];
                         }

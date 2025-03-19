@@ -1,8 +1,10 @@
 package labshopmonolith.domain;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import javax.persistence.*;
 import labshopmonolith.MonolithApplication;
 import labshopmonolith.domain.OrderPlaced;
@@ -40,9 +42,6 @@ public class Order {
         OrderPlaced orderPlaced = new OrderPlaced(this);
         orderPlaced.publishAfterCommit();
     }
-
-    @PrePersist
-    public void onPrePersist() {}
 
     public static OrderRepository repository() {
         OrderRepository orderRepository = MonolithApplication.applicationContext.getBean(

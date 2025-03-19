@@ -1,8 +1,10 @@
 package labshopmonolith.domain;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import javax.persistence.*;
 import labshopmonolith.InventoryApplication;
 import lombok.Data;
@@ -18,9 +20,6 @@ public class Inventory {
     private Long id;
 
     private Long stock;
-
-    @PostPersist
-    public void onPostPersist() {}
 
     public static InventoryRepository repository() {
         InventoryRepository inventoryRepository = InventoryApplication.applicationContext.getBean(
